@@ -1,5 +1,6 @@
 let appInsights = require("applicationinsights");
-appInsights.setup("InstrumentationKey=8f1b4e01-935c-4e32-b32d-34b869c42ca8;IngestionEndpoint=https://westeurope-5.in.applicationinsights.azure.com/;LiveEndpoint=https://westeurope.livediagnostics.monitor.azure.com/")
+let process = require("process ") 
+appInsights.setup(process.env.APPLICATIONINSIGHTS_CONNECTION_STRING )
     .setAutoDependencyCorrelation(true)
     .setAutoCollectRequests(true)
     .setAutoCollectPerformance(true, true)
@@ -10,8 +11,6 @@ appInsights.setup("InstrumentationKey=8f1b4e01-935c-4e32-b32d-34b869c42ca8;Inges
     .setSendLiveMetrics(true)
     .setDistributedTracingMode(appInsights.DistributedTracingModes.AI)
     .start();
-
-
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
